@@ -189,7 +189,7 @@ export class WAMonitoringService {
   }
 
   public async cleaningStoreData(instanceName: string) {
-    if (this.configService.get<Chatwoot>('CHATWOOT').ENABLED) {
+    if (this.configService.get<Chatwoot>('CHATWOOT')?.ENABLED) {
       const instancePath = join(STORE_DIR, 'chatwoot', instanceName);
       execFileSync('rm', ['-rf', instancePath]);
     }
@@ -414,7 +414,7 @@ export class WAMonitoringService {
 
         this.clearDelInstanceTime(instanceName);
 
-        if (this.configService.get<Chatwoot>('CHATWOOT').ENABLED) {
+        if (this.configService.get<Chatwoot>('CHATWOOT')?.ENABLED) {
           this.waInstances[instanceName]?.clearCacheChatwoot();
         }
 
