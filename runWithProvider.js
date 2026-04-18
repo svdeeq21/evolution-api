@@ -3,10 +3,9 @@ const { execSync } = require('child_process');
 const { existsSync } = require('fs');
 dotenv.config();
 
-const { DATABASE_PROVIDER, DATABASE_CONNECTION_URI } = process.env;
+const { DATABASE_PROVIDER, DATABASE_CONNECTION_URI, DATABASE_URL } = process.env;
 
-// Exit early if no database URL is configured
-if (!DATABASE_CONNECTION_URI) {
+if (!DATABASE_CONNECTION_URI && !DATABASE_URL) {
   console.log('DATABASE_CONNECTION_URI is not set, skipping migrations');
   process.exit(0);
 }
